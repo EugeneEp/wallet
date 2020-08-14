@@ -75,7 +75,7 @@
 			<ul class="pagination">
 				<li class="page-item {{'disabled' if not t.has_prev else ''}}"><a class="page-link" href="?page={{t.prev_num}}">Назад</a></li>
 
-				{% if t.pages and t.pages == t.page and t.pages != t.next_num and t.pages != 2 %}
+				{% if t.pages and t.pages == t.page and t.pages != t.next_num and t.pages not in [1, 2] %}
 		    		<li class="page-item"><a class="page-link" href="?page=1">1</a>
 		    		<li class="page-item disabled"><a class="page-link" href="#">...</a></li></li>
 		    	{% endif %}
