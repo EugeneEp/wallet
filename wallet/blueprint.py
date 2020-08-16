@@ -4,7 +4,7 @@ from flask import request
 from flask import redirect
 from flask import url_for
 from sqlalchemy import and_
-from flask_login import login_user, login_required, logout_user, current_user, login_with_roots
+from flask_login import login_user, login_required, logout_user, current_user
 from app import db
 from models import Users, Transactions, Wallets, hashpass, hashcsv, mergeTwoListsAsDict, Sms_approve, API, timeToDate, dateToTime, movementTranslate
 import requests
@@ -93,7 +93,12 @@ def profile_picture():
 			f = request.files['img']
 			ext = f.filename.split('.')[1]
 			f.filename = str(current_user.id) + '.png'
-			f.save('static/upload/profile/' + f.filename)
+			
+			try:
+				f.save('static/upload/profile/' + f.filename)
+			except:
+				return json.dumps({'error':'Что-то пошло не так'})
+
 			return json.dumps({'success':'Успех'})
 		else:
 			return json.dumps({'error':'Файл не найден'})

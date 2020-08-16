@@ -3,7 +3,7 @@ from flask import render_template
 from flask import request
 from flask import redirect
 from flask import url_for
-from flask_login import login_user, login_required, logout_user, current_user, login_with_roots
+from flask_login import login_user, login_required, logout_user, current_user
 from app import db
 from models import Users, hashpass, mergeTwoListsAsDict, Sms_approve, API
 import requests
