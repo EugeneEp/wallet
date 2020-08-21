@@ -175,7 +175,7 @@ def csv_transactions():
 			
 			link = hashcsv(current_user.id)
 
-			with open(link, 'w', newline='') as myfile:
+			with open(link, 'w', newline='', encoding='cp1251') as myfile:
 				wr = csv.writer(myfile, delimiter=";")
 				for x in mylist:
 					wr.writerow(x)
